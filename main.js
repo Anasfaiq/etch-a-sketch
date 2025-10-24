@@ -1,9 +1,11 @@
 const custom = document.querySelector("#custom");
 const container = document.querySelector("#container");
 const p = document.querySelector("p");
+const clear = document.querySelector("#clear")
 
 let holding = false;
 let currentSize = 16;
+let defaultColor = "black";
 
 // bagian ini adalah fungsi untuk membuat grid baru
 function makeGrid(size) {
@@ -23,8 +25,8 @@ function makeGrid(size) {
 
     square.addEventListener("mousemove", () => {
       if (holding) {
-        square.style.backgroundColor = "black";
-        square.style.borderColor = "black";
+        square.style.backgroundColor = `${defaultColor}`;
+        square.style.borderColor = `${defaultColor}`;
       }
     })
     container.appendChild(square);
@@ -46,39 +48,9 @@ custom.addEventListener('click', () => {
   p.textContent = `${currentSize} x ${currentSize}`;
 });
 
+
+
 // maksud dari bagian ini itu untuk set nilai default dari size grid
 makeGrid(16);
 p.textContent = `${currentSize} x ${currentSize}`;  
 
-
-// custom.addEventListener('click', () => {
-//   inputUser = prompt("Enter the number of grid that you want")
-//   if (inputUser > 100 || inputUser <= 0){
-//     return;
-//   }else {
-//     container.innerHTML = '';
-//     for (let i = 0; i < inputUser; i++){
-//       const square = document.createElement("div");
-//       square.classList.add('square');
-//       square.style.width = `${640 / inputUser}px`
-//       square.style.height = `${640 / inputUser}px`
-//       container.appendChild(square);
-//       square.addEventListener("mouseover", (e) => {
-//         console.log(e);
-//         square.style.backgroundColor = 'black';
-//       })
-// }
-
-//   }
-// }) 
-
-
-// for (let i = 0; i < inputUser; i++){
-//   const square = document.createElement("div");
-//   square.classList.add('square');
-//   container.appendChild(square);
-//   square.addEventListener("mouseover", (e) => {
-//     console.log(e);
-//     square.style.backgroundColor = 'black';
-//   })
-// }
