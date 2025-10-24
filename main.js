@@ -1,8 +1,14 @@
 const custom = document.querySelector("#custom");
 const container = document.querySelector("#container");
+const p = document.querySelector("p");
+
+let holding = false;
+let currentSize = 16;
 
 // bagian ini adalah fungsi untuk membuat grid baru
 function makeGrid(size) {
+  currentSize = size;
+
   container.innerHTML = '';
   const total = size * size;
   const squareSize = 640 / size;
@@ -12,17 +18,13 @@ function makeGrid(size) {
     square.style.width = `${squareSize}px`;
     square.style.height = `${squareSize}px`;
     // dibawah ini fungsi untuk mengubah warna dari grid yang di hover oleh mouse
-    square.addEventListener("mousedown", () => {
-      holding = true;
-    })
-
-    square.addEventListener("mouseup", () => {
-      holding = false;
-    })
+    square.addEventListener("mousedown", () => { holding = true; })
+    square.addEventListener("mouseup", () => { holding = false; })
 
     square.addEventListener("mousemove", () => {
       if (holding) {
         square.style.backgroundColor = "black";
+        square.style.borderColor = "black";
       }
     })
     container.appendChild(square);
@@ -41,10 +43,12 @@ custom.addEventListener('click', () => {
     return;
   }
   makeGrid(size);
+  p.textContent = `${currentSize} x ${currentSize}`;
 });
 
 // maksud dari bagian ini itu untuk set nilai default dari size grid
 makeGrid(16);
+p.textContent = `${currentSize} x ${currentSize}`;  
 
 
 // custom.addEventListener('click', () => {
