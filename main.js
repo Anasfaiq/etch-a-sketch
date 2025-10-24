@@ -12,8 +12,18 @@ function makeGrid(size) {
     square.style.width = `${squareSize}px`;
     square.style.height = `${squareSize}px`;
     // dibawah ini fungsi untuk mengubah warna dari grid yang di hover oleh mouse
-    square.addEventListener("mouseover", () => {
-      square.style.backgroundColor = "black";
+    square.addEventListener("mousedown", () => {
+      holding = true;
+    })
+
+    square.addEventListener("mouseup", () => {
+      holding = false;
+    })
+
+    square.addEventListener("mousemove", () => {
+      if (holding) {
+        square.style.backgroundColor = "black";
+      }
     })
     container.appendChild(square);
   }
