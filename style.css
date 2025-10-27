@@ -87,7 +87,7 @@ body h1 {
   border: #d1e0d1;
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  /* make container responsive: cap at 640px but shrink on small viewports */
+  /* buat kontainer responsif: batasi pada 640px tetapi menyusut pada viewport kecil */
   width: min(640px, 90vw);
   aspect-ratio: 1 / 1;
   height: auto;
@@ -96,12 +96,12 @@ body h1 {
 .square {
   box-sizing: border-box;   /* penting supaya border masuk ke ukuran */
   border: 1px solid #ccc;
-  /* make squares keep a 1:1 aspect ratio so we can size them by flex-basis (percent) */
+  /* membuat kotak memiliki rasio aspek 1:1 sehingga kita dapat mengukurnya dengan flex-basis (persen) */
   aspect-ratio: 1 / 1;
-  /* width/height are controlled by flex-basis set from JS (calc(100% / n)) */
+  /* lebar/tinggi dikontrol oleh flex-basis yang ditetapkan dari JS (calc(100% / n)) */
 }
 
-/* Responsive layout: stack controls above grid on smaller screens */
+/* responsive layout: tumpuk kontrol di atas grid pada layar yang lebih kecil */
 @media (max-width: 900px) {
   .container {
     flex-direction: column;
