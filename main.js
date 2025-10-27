@@ -31,21 +31,25 @@ function makeGrid(size) {
         square.style.backgroundColor = `${defaultColor}`;
         square.style.borderColor = `${defaultColor}`;
       }
-    })
+    });
 
-    square.addEventListener("touchstart", () => {
+    // tambahin { passive: false } biar bisa preventDefault()
+    square.addEventListener("touchstart", (e) => {
+      e.preventDefault(); // mencegah halaman ikut scroll saat menyentuh
       square.style.backgroundColor = `${defaultColor}`;
       square.style.borderColor = `${defaultColor}`;
-    })
+    }, { passive: false });
 
     square.addEventListener("touchmove", (e) => {
+      e.preventDefault(); // mencegah halaman ikut geser saat menggambar
       const touch = e.touches[0];
       const elem = document.elementFromPoint(touch.clientX, touch.clientY);
       if (elem && elem.classList.contains('square')) {
         elem.style.backgroundColor = `${defaultColor}`;
         elem.style.borderColor = `${defaultColor}`;
       }
-    });
+    }, { passive: false });
+
     container.appendChild(square);
   }
 
