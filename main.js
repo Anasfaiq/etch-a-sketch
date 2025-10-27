@@ -2,6 +2,7 @@ const custom = document.querySelector("#custom");
 const container = document.querySelector("#container");
 const p = document.querySelector("p");
 const clear = document.querySelector("#clear")
+const palette = document.querySelectorAll("#palette button");
 
 let holding = false;
 let currentSize = 16;
@@ -48,6 +49,25 @@ custom.addEventListener('click', () => {
   p.textContent = `${currentSize} x ${currentSize}`;
 });
 
+clear.addEventListener('click', () => {
+  // hentikan mode drawing jika sedang menahan klik
+  holding = false;
+
+  // pilih semua square dan reset style inline mereka —
+  // ini mengosongkan warna yang sudah diterapkan tanpa perlu membuat ulang grid
+  const squares = document.querySelectorAll('.square');
+  squares.forEach(sq => {
+    sq.style.backgroundColor = '';
+    sq.style.borderColor = '';
+  });
+
+})
+
+palette.forEach(button => {
+  button.addEventListener('click', () => {
+    defaultColor = button.style.backgroundColor;
+  })
+});
 
 
 // maksud dari bagian ini itu untuk set nilai default dari size grid
