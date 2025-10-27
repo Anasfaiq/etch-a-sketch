@@ -14,12 +14,14 @@ function makeGrid(size) {
 
   container.innerHTML = '';
   const total = size * size;
-  const squareSize = 640 / size;
+  // use flex-basis in percent so the squares fit exactly into each row
+  // this avoids subpixel rounding gaps that cause gaps between rows
   for(let i = 0; i < total; i++){
     const square = document.createElement("div");
     square.classList.add("square");
-    square.style.width = `${squareSize}px`;
-    square.style.height = `${squareSize}px`;
+    // set flex-basis so each row contains exactly `size` squares
+    // aspect-ratio in CSS keeps them perfectly square
+    square.style.flex = `0 0 calc(100% / ${size})`;
     // dibawah ini fungsi untuk mengubah warna dari grid yang di hover oleh mouse
     square.addEventListener("mousedown", () => { holding = true; })
     square.addEventListener("mouseup", () => { holding = false; })
@@ -32,7 +34,10 @@ function makeGrid(size) {
     })
     container.appendChild(square);
   }
+
 }
+// no explicit resize handler needed: flex-basis (percent) + aspect-ratio keep
+// the grid responsive and avoid per-row gaps caused by pixel rounding.
 
 custom.addEventListener('click', () => {
   const raw = prompt("Enter square per side (1 - 100)")

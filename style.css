@@ -87,12 +87,64 @@ body h1 {
   border: #d1e0d1;
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  width: 640px;
-  height: 640px;
+  /* make container responsive: cap at 640px but shrink on small viewports */
+  width: min(640px, 90vw);
+  aspect-ratio: 1 / 1;
+  height: auto;
 }
 
 .square {
   box-sizing: border-box;   /* penting supaya border masuk ke ukuran */
   border: 1px solid #ccc;
-  /* width/height di-set oleh JS */
+  /* make squares keep a 1:1 aspect ratio so we can size them by flex-basis (percent) */
+  aspect-ratio: 1 / 1;
+  /* width/height are controlled by flex-basis set from JS (calc(100% / n)) */
+}
+
+/* Responsive layout: stack controls above grid on smaller screens */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+  }
+
+  .left-section {
+    width: min(320px, 90vw);
+    height: auto;
+    padding: 20px;
+  }
+
+  #container {
+    width: min(640px, 90vw);
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@media (max-width: 420px) {
+  body h1 {
+    font-size: 28px;
+    padding: 18px;
+  }
+
+  .left-section {
+    padding: 15px;
+    gap: 18px;
+  }
+
+  #palette button {
+    width: 40px;
+    height: 40px;
+    border-width: 2px;
+  }
+
+  #clear,
+  #custom {
+    width: 90%;
+  }
+
+  .button-container {
+    gap: 8px;
+  }
 }
