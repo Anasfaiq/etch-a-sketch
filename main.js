@@ -32,6 +32,20 @@ function makeGrid(size) {
         square.style.borderColor = `${defaultColor}`;
       }
     })
+
+    square.addEventListener("touchstart", () => {
+      square.style.backgroundColor = `${defaultColor}`;
+      square.style.borderColor = `${defaultColor}`;
+    })
+
+    square.addEventListener("touchmove", (e) => {
+      const touch = e.touches[0];
+      const elem = document.elementFromPoint(touch.clientX, touch.clientY);
+      if (elem && elem.classList.contains('square')) {
+        elem.style.backgroundColor = `${defaultColor}`;
+        elem.style.borderColor = `${defaultColor}`;
+      }
+    });
     container.appendChild(square);
   }
 
