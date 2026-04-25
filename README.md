@@ -4,6 +4,8 @@
 
 This project is a web-based implementation of an **Etch-a-Sketch** drawing application. It allows users to create pixel-style drawings on a customizable grid using mouse or touch input. The application is designed to be simple, responsive, and interactive, making it suitable as a beginner-to-intermediate frontend project.
 
+🔗 **Live Demo:** [etch-a-sketch-seven-sooty.vercel.app](https://etch-a-sketch-seven-sooty.vercel.app/)
+
 ---
 
 ## ✨ Features
